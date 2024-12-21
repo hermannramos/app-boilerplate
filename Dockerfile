@@ -12,14 +12,17 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     npm \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Instala dependencias de PostgreSQL
+# Instala dependencias de PostgreSQL y psycopg2
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && apt-get install -y --no-install-recommends \
+    libpq-dev \
+    gcc \
+    build-essential \
     postgresql-client \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Instala psycopg2 para conectar Django con PostgreSQL
-RUN pip install psycopg2-binary
+RUN pip install psycopg2
 
 # Copia los archivos necesarios
 COPY . .
