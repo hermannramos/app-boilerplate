@@ -1,0 +1,25 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+mysqlclient = "*"
+django = "*"
+python-dotenv = "*"
+django-cors-headers = "*"
+djangorestframework = "*"
+channels = "*"
+psycopg2-binary = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.11"
+
+[scripts]
+start = "python manage.py runserver 0.0.0.0:8000"
+init = "python manage.py makemigrations"
+migrate = "python manage.py migrate"
+upgrade = "bash ./scripts/upgrade.sh"
+reset_db = "python manage.py flush --no-input"

@@ -1,0 +1,30 @@
+{
+  "name": "App Boilerplate",
+  "dockerComposeFile": "../docker-compose.yml",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "service": "app",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "nodeGypDependencies": true,
+      "version": "lts"
+    },
+    "ghcr.io/devcontainers/features/github-cli:1": {
+      "installDirectlyFromGitHubRelease": true,
+      "version": "latest"
+    }
+  },
+  "forwardPorts": [8000, 3000, 5432],
+  "onCreateCommand": "(cp .env.example .env || echo \".env creation failed\"); (pipenv install --dev || echo \"pipenv install failed\"); (bash database.sh || echo \"database.sh failed\");",
+  "postCreateCommand": "npm install",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "python.languageServer": "Pylance"
+      },
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance"
+      ]
+    }
+  }
+}
