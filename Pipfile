@@ -10,7 +10,6 @@ python-dotenv = "*"
 django-cors-headers = "*"
 djangorestframework = "*"
 channels = "*"
-psycopg2-binary = "*"
 psycopg2 = "*"
 
 [dev-packages]
